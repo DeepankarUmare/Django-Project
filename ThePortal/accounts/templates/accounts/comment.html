@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Make a comment</title>
+{% endblock %}
+{% block css %}
+<!--<link rel="stylesheet" href="../../static/accounts/comment_form.css"/>-->
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="button">
+        <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+    <div id="data">
+    {% for x in l %}
+        <h5>{{ x.user.username }}</h5><br>
+       <h4>{{ x }}</h4>
+        <hr>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock %}

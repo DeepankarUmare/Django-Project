@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+    <h1>LOGIN</h1>
+    <form method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="button">LOGIN</button>
+    </form>
+    <br>
+    <p><strong>-- OR --</strong></p>
+    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '125076774841978',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock %}
